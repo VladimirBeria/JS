@@ -41,7 +41,14 @@ const tasks = [
     const listContainer = document.querySelector('' +
         '.tasks-list-section .list-group')
 
+    const form = document.forms['addTask']
+    const inputTitle = form.elements['title']
+    const inputBody = form.elements['body']
+
     renderAllTasks(objOfTasks)
+
+    //Events
+    form.addEventListener('submit', onFormSubmitHandler())
 
     function renderAllTasks(tasksList) {
         if (!tasksList) {
@@ -84,5 +91,9 @@ const tasks = [
         li.appendChild(deleteBtn)
 
         return li
+    }
+    
+    function onFormSubmitHandler(e) {
+        e.preventDefault()
     }
 })(tasks);
